@@ -33,6 +33,13 @@ class GeneticInstruction:
 
 
 class GeneticProgram:
+    def validate(self) -> bool:
+        """Validate this genetic program using GeneticCodeValidator."""
+        from .genetic_code import GeneticCodeValidator
+        validator = GeneticCodeValidator()
+        is_valid, errors = validator.validate_program(self)
+        self.validation_errors = errors
+        return is_valid
     """Complete genetic program containing multiple instructions"""
     
     def __init__(self, program_name: str):
