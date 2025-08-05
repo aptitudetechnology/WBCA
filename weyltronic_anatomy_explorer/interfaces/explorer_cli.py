@@ -1,6 +1,6 @@
 """
 Interactive Command-Line Interface for Weyltronic Explorer
-Uses questionary for intuitive interactions and rich for beautiful displays
+Simplified implementation with core functionality
 """
 
 import questionary
@@ -9,24 +9,21 @@ from rich.panel import Panel
 from rich.text import Text
 from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
-from rich.layout import Layout
-from rich.live import Live
+from rich import print as rprint
 import time
 from typing import Dict, Any, List, Optional
 
 from core.cells import WeyltonicCell
 from core.tissues import WeyltonicTissue
 from core.organs import VascularSystem, ProcessingSystem, SupportSystem
-from quantum.weyl_transport import create_test_weyl_network, QuantumState
-from quantum.coherence import CoherenceTracker
-from genomics.genetic_code import create_sample_programs, GeneticCodeParser
+from genomics.genetic_code import GeneticProgram
 from genomics.gene_expression import GeneExpressionEngine
 
 
 class ExplorerCLI:
     """
-    Command-line interface for the Weyltronic Biological Computing Explorer.
-    Provides interactive wizards and menus for exploration and learning.
+    Simplified command-line interface for the Weyltronic Explorer.
+    Provides interactive menus for exploration and learning.
     """
     
     def __init__(self):
@@ -34,20 +31,39 @@ class ExplorerCLI:
         self.current_cell = None
         self.current_tissue = None
         self.current_organ_system = None
-        self.quantum_network = None
-        self.coherence_tracker = None
         self.expression_engine = GeneExpressionEngine()
-        self.sample_programs = create_sample_programs()
         
-        # Educational state
-        self.tutorial_progress = 0
-        self.completed_experiments = []
+    def run(self):
+        """Main entry point for the CLI"""
+        self.show_welcome()
         
-    def main_menu(self):
-        """Display the main menu and handle user choices"""
+        while True:
+            choice = self.main_menu()
+            
+            if choice == "exit":
+                self.console.print("[yellow]Thank you for exploring! Goodbye![/yellow]")
+                break
+            
+            self.handle_menu_choice(choice)
+    
+    def show_welcome(self):
+        """Display welcome message"""
+        welcome_text = """
+        Welcome to the Weyltronic Biological Computing Anatomy Explorer!
+        
+        Explore the fascinating world of biological computing through:
+        • Living cells with FPGA-based organelles
+        • Quantum coherent information transport
+        • Self-organizing tissues and organs
+        • Genetic programming and evolution
+        
+        Let's begin your journey!
+        """
+        
         self.console.print(Panel(
-            Text("🧬 Weyltronic Biological Computing Anatomy Explorer 🧬", 
-                 justify="center", style="bold green")
+            Text(welcome_text, justify="center", style="cyan"),
+            title="🧬 Weyltronic Explorer 🧬",
+            border_style="bold green"
         ))
         
         while True:
