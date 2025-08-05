@@ -79,6 +79,7 @@ class VascularSystem(OrganSystem):
     
     def __init__(self, system_id: str = None):
         super().__init__("Vascular System", system_id)
+        self.system_type = "Vascular System"
         self.xylem_channels = {}  # Resource transport
         self.phloem_channels = {}  # Information transport
         self.transport_capacity = 100.0
@@ -176,6 +177,7 @@ class SupportSystem(OrganSystem):
     
     def __init__(self, system_id: str = None):
         super().__init__("Support System", system_id)
+        self.system_type = "Support System"
         self.structural_integrity = 100.0
         self.scaffold_nodes = {}
         self.adaptation_capability = 0.8
@@ -269,6 +271,7 @@ class ProcessingSystem(OrganSystem):
     
     def __init__(self, system_id: str = None):
         super().__init__("Processing System", system_id)
+        self.system_type = "Processing System"
         self.processing_power = 0.0
         self.quantum_efficiency = 0.8
         self.light_absorption = 1.0
