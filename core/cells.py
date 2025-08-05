@@ -18,14 +18,15 @@ class WeyltonicCell:
     based on genetic programs.
     """
     
-    def __init__(self, cell_id: str = None):
+    def __init__(self, cell_id: str = None, cell_type: str = "undifferentiated"):
         self.cell_id = cell_id or str(uuid.uuid4())
+        self.cell_type = cell_type
         self.generation = 1
         self.age = 0
         self.health = 100.0
         self.energy_level = 100.0
         self.division_threshold = 200.0
-        
+
         # Initialize organelles
         self.organelles = {
             'nucleus': Nucleus(f"{self.cell_id}_nucleus"),
@@ -38,14 +39,14 @@ class WeyltonicCell:
             'golgi': GolgiApparatus(f"{self.cell_id}_golgi"),
             'cell_wall': CellWall(f"{self.cell_id}_cell_wall")
         }
-        
+
         # Cell state
         self.current_program = None
-        self.specialization = "undifferentiated"
+        self.specialization = cell_type or "undifferentiated"
         self.communication_channels = {}
         self.neighboring_cells = []
-        
-        print(f"WeyltonicCell {self.cell_id} created with {len(self.organelles)} organelles")
+
+        print(f"WeyltonicCell {self.cell_id} (type: {self.cell_type}) created with {len(self.organelles)} organelles")
     
     def load_genetic_program(self, program_name: str, program_code: Dict[str, Any]):
         """Load a genetic program into the nucleus"""
