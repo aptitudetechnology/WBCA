@@ -731,5 +731,3 @@ echo ""
 echo "📝 See PROMPTS.md for creating the remaining components"
 echo "🔬 Try: python examples/single_cell_explorer.py"
 EOF
-
-chmod +x setup_weyltronic_explorer.sh
