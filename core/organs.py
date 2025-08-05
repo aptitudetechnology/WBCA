@@ -85,6 +85,7 @@ class VascularSystem(OrganSystem):
         self.transport_capacity = 100.0
         self.current_load = 0.0
         self.capacity = 1.0  # Default capacity
+        self.health = 1.0  # Default health (fractional for percent)
         
     def establish_transport_channel(self, source: str, destination: str, 
                                   channel_type: str = "phloem"):
@@ -183,6 +184,7 @@ class SupportSystem(OrganSystem):
         self.scaffold_nodes = {}
         self.adaptation_capability = 0.8
         self.capacity = 1.0  # Default capacity
+        self.health = 1.0  # Default health (fractional for percent)
         
     def add_scaffold_node(self, node_id: str, position: tuple, strength: float = 1.0):
         """Add a structural scaffold node"""
@@ -278,6 +280,7 @@ class ProcessingSystem(OrganSystem):
         self.quantum_efficiency = 0.8
         self.light_absorption = 1.0
         self.capacity = 1.0  # Default capacity
+        self.health = 1.0  # Default health (fractional for percent)
         
     def execute_system_function(self, inputs: Dict[str, Any] = None) -> Dict[str, Any]:
         """Execute computational photosynthesis"""
