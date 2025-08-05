@@ -723,11 +723,10 @@ EOF
 
 echo "✅ Weyltronic Biological Computing Anatomy Explorer MVP structure created!"
 echo ""
-echo "Next steps:"
-echo "
-echo "1. pip install -r requirements.txt"
-echo "2. python main.py"
-echo ""
-echo "📝 See PROMPTS.md for creating the remaining components"
-echo "🔬 Try: python examples/single_cell_explorer.py"
-EOF
+echo "Next steps:
+1. pip install -r requirements.txt
+2. python main.py
+
+📝 See PROMPTS.md for creating the remaining components
+🔬 Try: python examples/single_cell_explorer.py
+"
